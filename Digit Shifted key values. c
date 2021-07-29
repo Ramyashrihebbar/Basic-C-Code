@@ -1,0 +1,65 @@
+#include<stdio.h>
+int main(){
+     char message[100];
+     int key,left,i;
+     printf("Enter Plain text:");
+     scanf("%s",message);
+
+     printf("Enter the key:");
+     scanf("%d",&key);
+
+     if(key<=0){
+         printf("INVALID INPUT");
+     }
+     else
+     {
+         for(i=0;message[i]!='\0';i++)
+        {
+             //adding key value to numeric number
+             if(message[i]>=48 && message[i]<=57)
+            {//computing Asci number
+                if(message[i]+key <= 57)
+                {
+                    message[i] = message[i]+key ;
+                }
+                else
+                {
+
+                    //wrap arround
+                    left = (message[i]+key) - 57 ;
+                    message[i] = 47+left;
+                }
+            }
+         
+         //adding key value to upper case letters
+            else if(message[i] >=65 && message[i]<=90)
+            {
+                 if(message[i] + key <= 90)
+                {
+                    message[i] = message[i] +key ;
+                }
+                else
+                {
+                    left = (message[i] + key) - 90;
+                    message[i] = 64+left;
+                }
+            }
+        //adding key value to lower case letters
+            else if(message[i] >=97 && message[i]<=122)
+            {
+                if(message[i] + key <= 122)
+                {
+                    message[i] = message[i] +key ;
+                }
+                else
+                {
+                    left = (message[i] + key) - 122;
+                    message[i] = 96+left;
+                }
+            }
+     }
+     printf("The encypted text is :%s",message);
+     }
+return 0;
+
+}
